@@ -25,6 +25,8 @@ request.setAttribute("list",list);
     <th>Email</th>  
     <th>Branch</th>
     <th>Phone</th>
+    <th>Edit?</th>
+    <th>Delete?</th>
 </tr>  
 <c:forEach items="${list}" var="mystudent">  
 <tr><td>${mystudent.getStudentID()}</td>
@@ -33,7 +35,12 @@ request.setAttribute("list",list);
     <td>${mystudent.getEmail()}</td>
     <td>${mystudent.getBranch()}</td>
     <td>${mystudent.getPhone()}</td>  
-</tr>  
+  
+
+<td><a href="UpdateStudent.jsp?studentID=${mystudent.getStudentID()}">Edit</a></td>
+<td><a href="deleteStudent.jsp?studentID=${mystudent.getStudentID()}">Delete</a></td>  
+
+</tr>
 </c:forEach>  
 
 </table>  

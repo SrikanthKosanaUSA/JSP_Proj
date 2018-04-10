@@ -1,7 +1,5 @@
 package Student;
 
-import dao.StudentDao;
-
 /*import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -81,7 +79,7 @@ public class StudentDetails {
 	    //return list;  
 	}*/
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		StudentDao dao = new StudentDao();
 		StudentDetails s1 = new StudentDetails();
 		s1.FirstName = "HJFJ";
@@ -91,7 +89,7 @@ public class StudentDetails {
 		s1.Phone = "5256";
 		StudentDao.getConnection();
 		dao.CreateStudent(s1);
-	}
+	}*/
 	}
 
 

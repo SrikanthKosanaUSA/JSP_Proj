@@ -47,9 +47,30 @@ public class StudentDao {
 	} 
 	
 
+	public static StudentDetails getStudentByID(int StudentID){  
+	    StudentDetails mystudent = null;  
+	    try{  
+	        Connection con = getConnection();  
+	        PreparedStatement ps = con.prepareStatement("select * from tblStudent where StudentID = ?");  
+	        ps.setInt(1, StudentID);  
+	        ResultSet rs = ps.executeQuery();  
+	        while(rs.next()){  
+	            mystudent =new StudentDetails();  
+	            mystudent.setStudentID(rs.getInt("studentID"));  
+	            mystudent.setFirstName(rs.getString("firstName"));  
+	            mystudent.setLastName(rs.getString("lastName"));  
+	            mystudent.setEmail(rs.getString("email")); 
+	            mystudent.setBranch(rs.getString("branch"));  
+	            mystudent.setPhone(rs.getString("phone"));   
+	        }  
+	    }catch(Exception e){System.out.println(e);}  
+	    return mystudent;  
+	}  
 	
-	public void CreateStudent(StudentDetails mystudent) {
-		//int StatusOfInsertion = 0;
+	
+	
+	public static int CreateStudent(StudentDetails mystudent) {
+		int StatusOfInsertion = 0;
 		try{  
 			Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement("Insert INTO tblStudent(FirstName, LastName, Email, Branch, Phone) Values (?,?,?,?,?)");  
@@ -58,13 +79,42 @@ public class StudentDao {
 	        ps.setString(3, mystudent.Email);  
 	        ps.setString(4, mystudent.Branch);  
 	        ps.setString(5, mystudent.Phone);
-	        ps.executeUpdate();
-	        //StatusOfInsertion = ps.executeUpdate(); 
+	        
+	        StatusOfInsertion = ps.executeUpdate(); 
 	        
 	        /*ps.close();
 		     con.close();*/
 	    }
 		catch(Exception e){System.out.println(e);}  
-	    //return StatusOfInsertion;  
+	    return StatusOfInsertion;  
 	}
+	
+	public static int updateStudent(StudentDetails mystudent){  
+	    int statusofUpdate = 0;  
+	    try{  
+	        Connection con=getConnection();  
+	        PreparedStatement ps = con.prepareStatement("UPDATE tblStudent SET FirstName = ?, LastName = ?, Email = ?, Branch = ?, Phone= ? WHERE StudentID=?");  
+	        ps.setString(1,mystudent.getFirstName());  
+	        ps.setString(2,mystudent.getLastName());  
+	        ps.setString(3,mystudent.getEmail());  
+	        ps.setString(4,mystudent.getBranch());  
+	        ps.setString(5,mystudent.getPhone());  
+	        ps.setInt(6,mystudent.getStudentID());  
+	        statusofUpdate = ps.executeUpdate();  
+	    }catch(Exception e){System.out.println(e);}  
+	    return statusofUpdate;  
+	}  
+	
+	public static int deleteStudent(StudentDetails mystudent){  
+	    int statusofDelete = 0;  
+	    try{  
+	        Connection con = getConnection();  
+	        PreparedStatement ps = con.prepareStatement("delete from tblStudent where StudentID=?");  
+	        ps.setInt(1,mystudent.getStudentID());  
+	        statusofDelete = ps.executeUpdate();  
+	    }catch(Exception e){System.out.println(e);}  
+	  
+	    return statusofDelete;  
+	}  
+	
 }

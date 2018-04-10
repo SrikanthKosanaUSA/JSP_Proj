@@ -12,7 +12,8 @@
 
 <h1>JSP Example</h1>  
  
-<a href="CreateNewStudent.jsp">Add a New Student...</a> 
+<a href="addStudent.html">Add a New Student...</a> 
+<br>
 <br>
 <a href="GetStudentDetails.jsp">View Students...</a>  
   
