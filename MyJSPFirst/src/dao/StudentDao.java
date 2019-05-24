@@ -75,9 +75,9 @@ public class StudentDao {
 			Connection con=getConnection();  
 	        PreparedStatement ps=con.prepareStatement("Insert INTO tblStudent(FirstName, LastName, Email, Branch, Phone) Values (?,?,?,?,?)");  
 	        ps.setString(1, mystudent.FirstName);  
-	        ps.setString(2, mystudent.LastName);  
-	        ps.setString(3, mystudent.Email);  
-	        ps.setString(4, mystudent.Branch);  
+	        ps.setString(2, mystudent.LastName);  //eydhddqjdgdwdhvhdvshjxvjvddv
+	        ps.setString(3, mystudent.Email);     //vhhdbshjdbsdbsdbshdbdbd
+	        ps.setString(4, mystudent.Branch);     //yigdbhsdbdsdsdbhddbd
 	        ps.setString(5, mystudent.Phone);
 	        
 	        StatusOfInsertion = ps.executeUpdate(); 
